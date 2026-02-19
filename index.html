@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>석민규 | ILED 박사과정 지원 포트폴리오</title>
+    <style>
+        :root {
+            --primary-color: #1a365d; /* 고급스러운 네이비 */
+            --accent-color: #b08d47; /* 가독성을 높인 차분한 골드 */
+            --text-color: #111111;
+            --bg-color: #f4f6f9;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            line-height: 1.85;
+            font-size: 18px;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- 스크롤 애니메이션 핵심 CSS --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px); /* 처음에 40px 아래에 위치 */
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); /* 아주 부드럽고 고급스러운 감속 효과 */
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0); /* 원래 위치로 복귀 */
+        }
+        /* 시차를 두고 나타나게 하는 딜레이 클래스 */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        /* -------------------------------- */
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 3px;
+            animation: fadeInDown 1s ease-out forwards;
+        }
+        header p {
+            font-size: 1.4rem;
+            color: #e2d1a7;
+            margin-top: 0;
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.3s forwards;
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: -3rem auto 0;
+            padding: 4rem 3rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
+            z-index: 10;
+        }
+        section {
+            margin-bottom: 5rem;
+        }
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2.5rem;
+            font-size: 2.2rem;
+            letter-spacing: -0.5px;
+        }
+        .letter-content {
+            font-size: 1.25rem;
+            text-align: justify;
+            word-break: keep-all;
+            background: #fcfcfc;
+            padding: 3rem;
+            border-left: 5px solid var(--primary-color);
+            border-radius: 0 8px 8px 0;
+        }
+        .letter-content p {
+            margin-bottom: 1.5rem;
+        }
+        .notice-banner {
+            background-color: #f8f9fa;
+            border-left: 5px solid var(--accent-color);
+            padding: 1.5rem 2rem;
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            border-radius: 0 8px 8px 0;
+            line-height: 1.6;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+        .portfolio-item {
+            background: #fff;
+            border: 1px solid #eaeaea;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, opacity 0.8s ease, translateY 0.8s ease;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            z-index: 2;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background: #000;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .portfolio-desc {
+            padding: 2rem;
+        }
+        .portfolio-desc h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+        }
+        .portfolio-desc p {
+            font-size: 1.15rem;
+            color: #444;
+            margin: 0;
+            word-break: keep-all;
+        }
+        .cv-section h3 {
+            color: var(--primary-color);
+            margin-top: 3rem;
+            font-size: 1.6rem;
+        }
+        .cv-item {
+            margin-bottom: 1.5rem;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            padding-left: 1rem;
+        }
+        .cv-date {
+            font-weight: bold;
+            color: var(--accent-color);
+            width: 140px;
+            display: inline-block;
+            font-size: 1.15rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: #11233d;
+            color: #aaa;
+            margin-top: 5rem;
+            font-size: 1.1rem;
+        }
+        .footer h2 {
+            color: #fff;
+            border: none;
+            margin-bottom: 1rem;
+        }
+        .footer p {
+            margin: 0.5rem 0;
+            color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>석민규</h1>
+    <p>MinGyu Seok | Ph.D. Applicant</p>
+</header>
+
+<div class="container">
+    <section id="introduction" class="reveal">
+        <h2>Letter of Intent</h2>
+        <div class="letter-content">
+            <p><strong style="font-size: 1.4rem; color: var(--primary-color);">임철일 교수님께,</strong></p>
+            <p>안녕하십니까, 교수님. 초등학교에서 재직 중인 교사이자, ILED 연구실 박사과정 진학을 희망하는 석민규입니다.</p>
+            <p>저는 경북교육청 공식 교육용 웹·앱 4종을 직접 개발·배포하며 수만 건의 실사용 데이터를 축적해 왔습니다. 또한 AIEDAP 사업 참여와 찾아가는 학교 컨설팅 코디네이터 활동을 통해 에듀테크가 현장에 도입될 때 어떤 조건에서 교사가 수용하고 어떤 조건에서 저항하는지, 그 확산 과정을 반복적으로 목격해 왔습니다.</p>
+            <p>이러한 현장 경험을 단순한 실천으로 끝내지 않고, 연구를 통해 근거 있는 답으로 만들어 더 많은 교육 현장에 기여하고 싶다는 바람을 갖게 되었습니다. 교수님께서 추진해 오신 에듀테크 현장 확산 연구와 RPISD 모형이 그 토대가 될 수 있다고 느껴 지원하게 되었습니다.</p>
+            <p>2027년도 박사과정 모집 계획 및 그 이전 연구 참여 가능성에 대해 여쭙고 싶습니다. 교수님께서 편하신 일정에 맞춰 찾아뵙겠습니다. 귀한 시간 내어 읽어주셔서 감사합니다.</p>
+        </div>
+    </section>
+
+    <section id="research-interests">
+        <h2 class="reveal">Research Interests</h2>
+        <div class="cv-item reveal delay-1">
+            <strong style="font-size: 1.3rem; color: var(--primary-color);">· 에듀테크 현장 확산 모델링</strong><br>
+            에듀테크 솔루션의 현장 도입 과정에서 나타나는 교사 수용·저항 패턴 분석 및 지속 가능한 확산 조건 탐구, 개발·배포·컨설팅 경험을 통한 현장 모델링
+        </div>
+        <div class="cv-item reveal delay-2">
+            <strong style="font-size: 1.3rem; color: var(--primary-color);">· AI 융합 학습 환경을 위한 교수설계</strong><br>
+            에듀테크 및 AI 코스웨어에 적용 가능한 교수설계 모형 개발 연구, RPISD 모형의 현장 적용 및 확장 가능성 탐구
+        </div>
+        <div class="cv-item reveal delay-1">
+            <strong style="font-size: 1.3rem; color: var(--primary-color);">· 교원 AI·디지털 역량 개발</strong><br>
+            다년간의 교원 연수 강사 경험을 통해 관찰한 교사의 AI 역량 격차 및 학습 패턴을 바탕으로, 현장 맥락에 실질적으로 작동하는 교원 디지털 역량 강화 프로그램 설계 원리 탐구
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2 class="reveal">Projects & Portfolio</h2>
+        
+        <div class="notice-banner reveal delay-1">
+            <strong style="font-size: 1.3rem;">💡 단독 개발 프로젝트</strong><br>
+            아래 소개된 모든 애플리케이션과 웹사이트는 기획, 설계, UI/UX 디자인, Full-stack 개발 및 최종 현장 배포까지 <strong>본인이 직접 100% 수행한 결과물</strong>입니다.
+        </div>
+
+        <div class="grid-2">
+            
+            <div class="portfolio-item reveal delay-1">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/7KcXgGCWDT4?start=237&rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="portfolio-desc">
+                    <h3>1. 환경교육용 앱 (GreenQuest)</h3>
+                    <p>학생들의 환경 인식 개선을 위해 기획 및 개발된 교육용 애플리케이션입니다.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item reveal delay-2">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/VWuvwoh4u4Q?start=0&rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="portfolio-desc">
+                    <h3>2. 약물오남용 예방 앱</h3>
+                    <p>현장 교육의 필요성에 맞춰 개발된 마약 및 약물 오남용 예방 교육 앱입니다.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item reveal delay-1">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/eg6S4G0Tqgc?start=654&rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="portfolio-desc">
+                    <h3>3. 실과 교육용 앱 (무인도 대탈출)</h3>
+                    <p>초등 실과 교과와 연계하여 문제해결력을 기를 수 있도록 설계된 앱입니다.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item reveal delay-2">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/zlTJrZ2WdlM?start=0&rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="portfolio-desc">
+                    <h3>4. 보건 교육용 앱</h3>
+                    <p>학생들의 올바른 보건 지식 함양을 위해 설계 및 배포된 애플리케이션입니다.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item reveal delay-1">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/yP9_j9uyfJY?start=0&rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="portfolio-desc">
+                    <h3>5. 학생성장지원평가 사이트</h3>
+                    <p>경북교육청 주관, 현장 초등학교에서 17,000회 이상 실사용된 평가 사이트입니다.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="cv" class="cv-section">
+        <h2 class="reveal">Curriculum Vitae</h2>
+        
+        <h3 class="reveal">Education</h3>
+        <div class="cv-item reveal delay-1"><span class="cv-date">2021.03 - 2025.02</span>대구교육대학교 교육대학원 유아미술교육 전공 (교육학 석사)<br>
+        <span style="color: #666; font-size: 1.05rem; margin-left: 145px; display: inline-block; margin-top: 5px;">- 석사논문: AI 도구를 활용한 애니메이션 제작 활동 분석</span></div>
+        <div class="cv-item reveal delay-2"><span class="cv-date">2014.03 - 2018.02</span>대구교육대학교 초등교육 전공 (교육학 학사)</div>
+
+        <h3 class="reveal">Key Achievements</h3>
+        <div class="cv-item reveal delay-1"><span class="cv-date">2025</span>제56회 전국교육자료전 — <strong>교육부 장관상</strong></div>
+        <div class="cv-item reveal delay-1"><span class="cv-date">2024</span>제18회 디지털 교육 연구대회 — <strong>교육부 장관상</strong></div>
+        <div class="cv-item reveal delay-1"><span class="cv-date">2023</span>제17회 정보화 연구대회 — <strong>교육부 장관상</strong></div>
+
+        <h3 class="reveal">Technical Skills</h3>
+        <div class="cv-item reveal delay-1">
+            <strong>·언어 및 프레임워크:</strong> Unity (C#), HTML/CSS, Google Apps Script<br>
+            <strong>· 백엔드 및 DB:</strong> Firebase (Firestore, Auth, Hosting)
+        </div>
+
+        <h3 class="reveal">Professional Activities</h3>
+        <div class="cv-item reveal delay-1"><strong>[교원 연수 강사]</strong><br>
+        - 부산교육청 AI 영재교육 교원 심화과정 직무연수 강사 (2026)<br>
+        - AI·디지털 기반 교육혁신 선도교사 양성 연수 강사 (2025)<br>
+        - 찾아가는 학교 AI·디지털 역량 강화 컨설팅 연수 강사 (2025)<br>
+        - 디지털 도구 활용 수업 역량 강화 직무연수 강사 (2025)<br>
+        - 찾아가는 학교 컨설팅 연수 코디네이터 및 강사 (2024~2025)<br>
+        - KERIS 디지털교육 및 교육정보화 연구대회 우수 사례 발표 (2023, 2024)<br>
+        - 디지털 기반 교육혁신 학교관리자 직무연수 강사 (2024) 등
+        </div>
+        
+        <div class="cv-item reveal delay-2"><strong>[위원 활동 및 현장 교육]</strong><br>
+        - 교육부 'AI교육 역량 강화 멀티트랙' 검토 위원 (2026)<br>
+        - KERIS 디지털 교육 연구대회 전국대회 심사위원 (2025)<br>
+        - 경북수업나눔축제 추진위원 및 운영지원단 (2025)<br>
+        - 경북 초등 SW-AI 교육 캠프 운영위원 및 디지털새싹 캠프 강사 (2023~2025)
+        </div>
+    </section>
+</div>
+
+<div class="footer reveal">
+    <h2>Contact</h2>
+    <p></p>
+    <p>Phone: 010-9884-1560 | E-mail: seokmingyu14@naver.com</p>
+    <p style="margin-top: 2rem; font-size: 1rem; opacity: 0.6;">© 2026 MinGyu Seok. All Rights Reserved.</p>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // 요소가 15% 보일 때 애니메이션 시작
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // 한 번 애니메이션 후에는 다시 실행하지 않음 (깔끔함 유지)
+                }
+            });
+        }, observerOptions);
+
+        const elements = document.querySelectorAll('.reveal');
+        elements.forEach(el => observer.observe(el));
+    });
+</script>
+
+</body>
+</html>
